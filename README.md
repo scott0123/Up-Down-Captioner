@@ -21,7 +21,12 @@ See the [original repo](https://github.com/peteanderson80/Up-Down-Captioner) for
     sudo bash build_dep.sh
     ```
 
-4.  Add the environment variables (need to do this for every new shell)
+4. Install the python modules (no `sudo` here!)
+    ```Shell
+    bash install_mods.sh
+    ```
+
+5.  Add the environment variables (need to do this for every new shell)
     ```Shell
     source env_vars.sh
     ```
