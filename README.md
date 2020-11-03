@@ -1,52 +1,9 @@
 # Up-Down-Captioner
 
-Simple yet high-performing image captioning model using Caffe and python. Using image features from [bottom-up attention](https://github.com/peteanderson80/bottom-up-attention), in July 2017 this model achieved state-of-the-art performance on all metrics of the [COCO captions test leaderboard](http://cocodataset.org/#captions-leaderboard) (**SPICE 21.5**, **CIDEr 117.9**, **BLEU_4 36.9**). The architecture (2-layer LSTM with attention) is described in Section 3.2 of:
-- [Bottom-Up and Top-Down Attention for Image Captioning and Visual Question Answering](https://arxiv.org/abs/1707.07998). 
-
-### Reference
-If you use this code in your research, please cite our paper:
-```
-@inproceedings{Anderson2017up-down,
-  author = {Peter Anderson and Xiaodong He and Chris Buehler and Damien Teney and Mark Johnson and Stephen Gould and Lei Zhang},
-  title = {Bottom-Up and Top-Down Attention for Image Captioning and Visual Question Answering},
-  booktitle={CVPR},
-  year = {2018}
-}
-```
-
-### License
-
-This code is released under the MIT License (refer to the LICENSE file for details).
-
-### Requirements: software
-
-0. **`Important`** Please use the version of caffe provided as a submodule within this repository. It contains additional layers and features required for captioning.
-
-1.  Requirements for `Caffe` and `pycaffe` (see: [Caffe installation instructions](http://caffe.berkeleyvision.org/installation.html))
-
-    **Note:** Caffe *must* be built with support for Python layers and NCCL!
-
-    ```make
-    # In your Makefile.config, make sure to have these lines uncommented
-    WITH_PYTHON_LAYER := 1
-    USE_NCCL := 1
-    # Unrelatedly, it's also recommended that you use CUDNN
-    USE_CUDNN := 1
-    ```
-3.  Nvidia's NCCL library which is used for multi-GPU training https://github.com/NVIDIA/nccl
-
-### Requirements: hardware
-
-By default, the provided training scripts assume that two gpus are available, with indices 0,1. Training on two gpus takes around 9 hours. Any NVIDIA GPU with 8GB or larger memory should be OK. Training scripts and prototxt files will require minor modifications to train on a single gpu (e.g. set `iter_size` to 2).
-
-
-### Demo - Using the model to predict on new images
-
-Run install instructions 1-4 below, then use the notebook at `scripts/demo.ipynb`
+### Source
+See the [original repo](https://github.com/peteanderson80/Up-Down-Captioner) for more information on [Introduction/Reference/License/Requirements/Results].
 
 ### Installation
-
-All instructions are from the top level directory. To run the demo, should be only steps 1-4 required (remaining steps are for training a model).
 
 1.  Clone the Up-Down-Captioner repository:
     ```Shell
@@ -54,32 +11,22 @@ All instructions are from the top level directory. To run the demo, should be on
     git clone --recursive https://github.com/scott0123/Up-Down-Captioner.git
     ```
 
-2.  Build Caffe and pycaffe:
+2.  (If starting without CUDA/NCCL/CUDNN installed) Install the ML environment:
     ```Shell
-    cd ./external/caffe
-
-    # If you're experienced with Caffe and have all of the requirements installed
-    # and your Makefile.config in place, then simply do:
-    make -j8 && make pycaffe
+    sudo bash ml_env.sh
     ```
 
-3.  Build the COCO tools:
+3.  Build the dependencies
     ```Shell
-    cd ./external/coco/PythonAPI
-    make
+    sudo bash build_dep.sh
     ```
 
-4.  Add python layers and caffe build to PYTHONPATH:
+4.  Add the environment variables (need to do this for every new shell)
     ```Shell
-    cd $REPO_ROOT
-    export PYTHONPATH=${PYTHONPATH}:$(pwd)/layers:$(pwd)/lib:$(pwd)/external/caffe/python
+    source env_vars.sh
     ```
-    
-5.  Build Ross Girshick's Cython modules (to run the demo on new images)
-    ```Shell
-    cd $REPO_ROOT/lib
-    make
-    ```
+
+### Other installation
     
 6.  Download Stanford CoreNLP (required by the evaluation code):
     ```Shell
