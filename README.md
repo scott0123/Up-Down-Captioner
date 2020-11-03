@@ -54,11 +54,6 @@ All instructions are from the top level directory. To run the demo, should be on
     git clone --recursive https://github.com/scott0123/Up-Down-Captioner.git
     ```
 
-    If you forget to clone with the `--recursive` flag, then you'll need to manually clone the submodules:
-    ```Shell
-    git submodule update --init --recursive
-    ```
-
 2.  Build Caffe and pycaffe:
     ```Shell
     cd ./external/caffe
