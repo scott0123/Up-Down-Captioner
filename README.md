@@ -51,7 +51,7 @@ All instructions are from the top level directory. To run the demo, should be on
 1.  Clone the Up-Down-Captioner repository:
     ```Shell
     # Make sure to clone with --recursive
-    git clone --recursive https://github.com/peteanderson80/Up-Down-Captioner.git
+    git clone --recursive https://github.com/scott0123/Up-Down-Captioner.git
     ```
 
     If you forget to clone with the `--recursive` flag, then you'll need to manually clone the submodules:
