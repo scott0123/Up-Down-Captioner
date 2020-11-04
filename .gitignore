@@ -11,6 +11,7 @@ data/tsv
 data/images
 *.caffemodel
 *.caffemodel.H5
+*.caffemodel.h5
 
 # Temp files
 *~
