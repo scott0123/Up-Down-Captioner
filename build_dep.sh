@@ -11,7 +11,8 @@ export REPO_ROOT=$(pwd)
 cd $REPO_ROOT/external/caffe
 cp Makefile.config.example Makefile.config
 # make edits
-sed -i '5s/^# //;21s/^# //;92s/^# //;104s/^# //' Makefile.config
+#sed -i '5s/^# //;21s/^# //;92s/^# //;104s/^# //' Makefile.config # Enabling cuDNN does not work for now
+sed -i '21s/^# //;92s/^# //;104s/^# //' Makefile.config
 sed -i '95s/$/ \/usr\/include\/hdf5\/serial \/usr\/include\/opencv4 \/usr\/include\/boost/' Makefile.config
 sed -i '96s/$/ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/' Makefile.config
 sed -i '37,38d' Makefile.config
